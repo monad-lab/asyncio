@@ -1,32 +1,32 @@
 # asyncio
-test application for holdem game
+## test application for holdem game
 
-현재 디렉토리 구조
-.
-├── main.py
-├── database
-│   └── connection.py
-│   └── crud.py
-├── models
-│   ├── events.py
-│   └── users.py
-├── routes
-│   ├── events.py
-│   └── users.py
-└── test_main.py
+### 현재 디렉토리 구조
+.  
+├── main.py  
+├── database  
+│   └── connection.py  
+│   └── crud.py  
+├── models  
+│   ├── events.py  
+│   └── users.py  
+├── routes  
+│   ├── events.py  
+│   └── users.py  
+└── test_main.py  
+  
+#### 진척상황
+- FastAPI 애플리케이션-mongoDB 연동
+- 클라이언트 측에서 필요한 일부 기능 구현
+  - 유저 등록, 유저 로그인, 유저 이벤트 생성/변경/삭제,조회
 
-진척상황
-FastAPI 애플리케이션-mongoDB 연동
-클라이언트 측에서 필요한 일부 기능 구현
-  유저 등록, 유저 로그인, 유저 이벤트 생성/변경/삭제,조회
+#### 현재 이슈 05.24.2024
+- pytest 실패, 원인분석 중
+- 테스트 내용
+  - 가상 클라이언트 9개로 각각 유저 등록, 로그인, 이벤트 생성 및 변경 요청 처리를 하는 pytest가 작동하지 않음
 
-현재 이슈 05.24.2024
-pytest 실패, 원인분석 중
-테스트 내용
-  가상 클라이언트 9개로 각각 유저 등록, 로그인, 이벤트 생성 및 변경 요청 처리를 하는 pytest가 작동하지 않음
-
-에러 메시지
-
+#### 에러 메시지
+```python
   (holdem) (base) philosucker@philosucker-Lenovo-IdeaPad-S340-15API:~/testapp$ pytest tests/test_main.py
 ======================================= test session starts =======================================
 platform linux -- Python 3.12.3, pytest-8.2.1, pluggy-1.5.0
@@ -241,3 +241,4 @@ tests/test_main.py::test_user_registration_and_events
 FAILED tests/test_main.py::test_user_registration_and_events - RuntimeError: Task <Task pending name='Task-3' coro=<test_user_registration_and_events() runni...
 FAILED tests/test_main.py::test_performance - RuntimeError: Task <Task pending name='Task-4' coro=<test_performance() running at /home/philo...
 ================================== 2 failed, 6 warnings in 1.42s ==================================
+```
